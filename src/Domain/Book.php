@@ -2,20 +2,22 @@
 
 namespace Library\Domain;
 
-class Book
+final class Book
 {
-
     private $title;
 
-    private $book;
+    private $author;
 
     private $isbnNumber;
 
     private $isReserved;
 
-    public function setTitle($title)
+    public function __construct(BookBuilder $builder)
     {
-        $this->title = $title;
+        $this->title = $builder->getBuilder();
+        $this->author = $builder->getAuthor();
+        $this->isbnNumber = $builder->getIsbnNumber();
+        $this->isReserved = $builder->getIsReserved();
     }
 
     public function getTitle()
@@ -23,19 +25,9 @@ class Book
         return $this->title;
     }
 
-    public function setBook($book)
+    public function getAuthor()
     {
-        $this->book = $book;
-    }
-
-    public function getBook()
-    {
-        return $this->book;
-    }
-
-    public function setIsbnNumber($isbnNumber)
-    {
-        $this->isbnNumber = $isbnNumber;
+        return $this->author;
     }
 
     public function getIsbnNumber()
@@ -43,14 +35,8 @@ class Book
         return $this->isbnNumber;
     }
 
-    public function setIsReserved($isReserved)
-    {
-        $this->isReserved = $isReserved;
-    }
-
     public function getIsReserved()
     {
         return $this->isReserved;
     }
-
 }
