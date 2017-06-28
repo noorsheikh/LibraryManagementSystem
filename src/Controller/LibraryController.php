@@ -4,6 +4,12 @@ namespace Library\Controller;
 
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+use Library\Domain\Book;
+use Library\Domain\BookBuilder;
 use Library\Repository\LibraryRepository;
 
 class LibraryController implements ControllerProviderInterface
@@ -57,6 +63,27 @@ class LibraryController implements ControllerProviderInterface
             } catch (\Exception $exception) {
                 throw new $exception;
             }
+        });
+
+        $this->controller->post("/add-book", function (Request $request) use ($app) {
+            try {
+                $book = BookBuilder::instance()
+                    ->withTitle($request->request->get('title'))
+                    ->withAuthor($request->request->get('author'))
+                    ->withIsbnNumber($request->request->get('isbn_number'))
+                    ->withIsReserved($request->request->get('is_reserved'))
+                    ->build();
+
+                if ($book instanceof Book) {
+                    $this->repository->addBook($book);
+                }
+
+                return $app->json("Book added successfully!", 201);
+
+            } catch (\Exception $exception) {
+                throw new $exception;
+            }
+
         });
 
         return $this->controller;

@@ -4,6 +4,8 @@ namespace Library\Repository;
 
 use Doctrine\DBAL\Connection;
 
+use Library\Domain\Book;
+
 class LibraryRepository
 {
 
@@ -11,6 +13,23 @@ class LibraryRepository
 
     public function __construct(Connection $connection) {
         $this->connection = $connection;
+    }
+
+    public function addBook(Book $book)
+    {
+        try {
+            $this->connection()->insert(
+                'book',
+                array(
+                    'title' => $book->getTitle(),
+                    'author' => $book->getAuthor(),
+                    'isbn_number' => $book->getIsbnNumber(),
+                    'is_reserved' => $book->getIsReserved()
+                )
+            );
+        } catch (\Exception $exception) {
+            throw new $exception;
+        }
     }
 
     public function getBooks()

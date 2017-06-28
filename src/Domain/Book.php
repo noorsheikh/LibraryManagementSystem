@@ -14,7 +14,7 @@ final class Book
 
     public function __construct(BookBuilder $builder)
     {
-        $this->title = $builder->getBuilder();
+        $this->title = $builder->getTitle();
         $this->author = $builder->getAuthor();
         $this->isbnNumber = $builder->getIsbnNumber();
         $this->isReserved = $builder->getIsReserved();
