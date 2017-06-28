@@ -8,6 +8,8 @@ final class CopyBuilder
 
     private $copyNumber;
 
+    private $bookId;
+
     public static $instance;
 
     public static function instance()
@@ -15,15 +17,21 @@ final class CopyBuilder
         return new static;
     }
 
-    public function withIsbnNumber()
+    public function withIsbnNumber($isbnNumber)
     {
         $this->isbnNumber = $isbnNumber;
         return $this;
     }
 
-    public function withCopyNumber()
+    public function withCopyNumber($copyNumber)
     {
         $this->copyNumber = $copyNumber;
+        return $this;
+    }
+
+    public function withBookId($bookId)
+    {
+        $this->bookId = $bookId;
         return $this;
     }
 
@@ -40,5 +48,10 @@ final class CopyBuilder
     public function getCopyNumber()
     {
         return $this->copyNumber;
+    }
+
+    public function getBookId()
+    {
+        return $this->bookId;
     }
 }
