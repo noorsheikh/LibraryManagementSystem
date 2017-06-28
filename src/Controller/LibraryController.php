@@ -10,6 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Library\Domain\Book;
 use Library\Domain\BookBuilder;
+use Library\Domain\Copy;
+use Library\Domain\CopyBuilder;
+use Library\Domain\Borrower;
+use Library\Domain\BorrowerBuilder;
 use Library\Repository\LibraryRepository;
 
 class LibraryController implements ControllerProviderInterface
@@ -67,15 +71,29 @@ class LibraryController implements ControllerProviderInterface
 
         $this->controller->post("/add-book", function (Request $request) use ($app) {
             try {
+
                 $book = BookBuilder::instance()
-                    ->withTitle($request->request->get('title'))
-                    ->withAuthor($request->request->get('author'))
-                    ->withIsbnNumber($request->request->get('isbn_number'))
-                    ->withIsReserved($request->request->get('is_reserved'))
-                    ->build();
+                            ->withTitle($request->request->get('title'))
+                            ->withAuthor($request->request->get('author'))
+                            ->withIsbnNumber($request->request->get('isbn_number'))
+                            ->build();
 
                 if ($book instanceof Book) {
-                    $this->repository->addBook($book);
+                    $bookId = $this->repository->addBook($book);
+                }
+
+                $bookCopies = $request->request->get('copies');
+
+                foreach ($bookCopies as $copy) {
+                    $copy = CopyBuilder::instance()
+                                ->withIsbnNumber($copy['isbn_number'])
+                                ->withCopyNumber($copy['copy_number'])
+                                ->withBookId($bookId)
+                                ->build();
+
+                    if ($copy instanceof Copy) {
+                        $this->repository->addCopy($copy);
+                    }
                 }
 
                 return $app->json("Book added successfully!", 201);
@@ -84,6 +102,26 @@ class LibraryController implements ControllerProviderInterface
                 throw new $exception;
             }
 
+        });
+
+        $this->controller->post("/add-borrower", function (Request $request) use ($app) {
+            try {
+
+                $borrower = BorrowerBuilder::instance()
+                                ->withBorrowerName($request->request->get('borrower_name'))
+                                ->withBorrowerMembershipId($request->request->get('borrower_membership_id'))
+                                ->withStatus($request->request->get('status'))
+                                ->build();
+
+                if ($borrower instanceof Borrower) {
+                    $this->repository->addBorrower($borrower);
+                }
+
+                return $app->json("Borrower added sucessfully", 201);
+
+            } catch (\Exception $exception) {
+                throw new $exception;
+            }
         });
 
         return $this->controller;

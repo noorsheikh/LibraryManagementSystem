@@ -4,9 +4,9 @@ namespace Library\Domain;
 
 final class BorrowerBuilder
 {
-    private $isbnNumber;
+    private $borrowerName;
 
-    private $copyNumber;
+    private $borrowerMembershipId;
 
     private $status;
 
@@ -17,19 +17,19 @@ final class BorrowerBuilder
         return new static;
     }
 
-    public withIsbnNumber($isbnNumber)
+    public function withBorrowerName($borrowerName)
     {
-        $this->isbnNumber = $isbnNumber;
+        $this->borrowerName = $borrowerName;
         return $this;
     }
 
-    public withCopyNumber($copyNumber)
+    public function withBorrowerMembershipId($borrowerMembershipId)
     {
-        $this->copyNumber = $copyNumber;
+        $this->borrowerMembershipId = $borrowerMembershipId;
         return $this;
     }
 
-    public withStatus($status)
+    public function withStatus($status)
     {
         $this->status = $status;
         return $this;
@@ -40,14 +40,14 @@ final class BorrowerBuilder
         return new Borrower($this);
     }
 
-    public function getIsbnNumber()
+    public function getBorrowerName()
     {
-        return $this->isbnNumber;
+        return $this->borrowerName;
     }
 
-    public function getCopyNumber()
+    public function getBorrowerMembershipId()
     {
-        return $this->copyNumber;
+        return $this->borrowerMembershipId;
     }
 
     public function getStatus()

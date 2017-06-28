@@ -4,13 +4,17 @@ namespace Library\Domain;
 
 final class ReservationBuilder
 {
-    private $borrowerId;
+    private $borrowerMembershipId;
 
     private $isbnNumber;
 
     private $reservationDate;
 
     private $redeemedDate;
+
+    private $borrowerId;
+
+    private $bookId
 
     public static $instance;
 
@@ -19,9 +23,9 @@ final class ReservationBuilder
         return new static;
     }
 
-    public function withBorrowerId($borrowerId)
+    public function withBorrowerMembershipId($borrowerMembershipId)
     {
-        $this->borrowerId = $borrowerId;
+        $this->borrowerMembershipId = $borrowerMembershipId;
         return $this;
     }
 
@@ -43,14 +47,26 @@ final class ReservationBuilder
         return $this;
     }
 
+    public function withBorrowerId($borrowerId)
+    {
+        $this->borrowerId = $borrowerId;
+        return $this;
+    }
+
+    public function withBookId($bookId)
+    {
+        $this->bookId = $bookId;
+        return $this;
+    }
+
     public function build()
     {
         return new Reservation($this);
     }
 
-    public function getBorrowerId()
+    public function getBorrowerMembershipId()
     {
-        return $this->borrowerId;
+        return $this->borrowerMembershipId;
     }
 
     public function getIsbnNumber()
@@ -66,5 +82,15 @@ final class ReservationBuilder
     public function getRedeemedDate()
     {
         return $this->redeemedDate;
+    }
+
+    public function getBorrowerId()
+    {
+        return $this->borrowerId;
+    }
+
+    public function getBookId()
+    {
+        return $this->bookId;
     }
 }

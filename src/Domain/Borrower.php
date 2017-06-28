@@ -4,27 +4,27 @@ namespace Library\Domain;
 
 final class Borrower
 {
-    private $isbnNumber;
+    private $borrowerName;
 
-    private $copyNumber;
+    private $borrowerMembershipId;
 
     private $status;
 
     public function __construct(BorrowerBuilder $builder)
     {
-        $this->isbnNumber = $builder->getIsbnNumber();
-        $this->copyNumber = $builder->getCopyNumber();
+        $this->borrowerName = $builder->getBorrowerName();
+        $this->borrowerMembershipId = $builder->getBorrowerMembershipId();
         $this->status = $builder->getStatus();
     }
 
-    public function getIsbnNumber()
+    public function getBorrowerName()
     {
-        return $this->isbnNumber;
+        return $this->borrowerName;
     }
 
-    public function getCopyNumber()
+    public function getBorrowerMembershipId()
     {
-        return $this->copyNumber;
+        return $this->borrowerMembershipId;
     }
 
     public function getStatus()
