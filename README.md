@@ -1,17 +1,17 @@
-#Library Management System
+# Library Management System
 
 Silex PHP Framework based RESTful Web APIs for Library Management System.
 
-##Development Settings
+## Development Settings
 
 How to setup this localy
 
-###Prerequisities
+### Prerequisities
 
 - PHP 5.6
 - SQLite 3 or above
 
-###Configuration
+### Configuration
 
 Following are the details for downloading and setting up local development environment
 
@@ -20,7 +20,7 @@ Clone the repository to your local development directory
 git clone https://github.com/noorsheikh/LibraryManagementSystem.git
 ```
 
-##API Endpoints
+## API Endpoints
 
 Base URL: http://localhost:8888/LibraryManagementSystem/library
 
@@ -33,6 +33,6 @@ Base URL: http://localhost:8888/LibraryManagementSystem/library
 | /add-borrower |   Add a new borrower or membership for a person. |
 
 
-##Testing APIs locally
+## Testing APIs locally
 
 For testing APIs locally download the following Chrome extension [Advanced REST client](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) locally and lunch the App after downloading.
