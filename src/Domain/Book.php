@@ -10,14 +10,11 @@ final class Book
 
     private $isbnNumber;
 
-    private $isReserved;
-
     public function __construct(BookBuilder $builder)
     {
         $this->title = $builder->getTitle();
         $this->author = $builder->getAuthor();
         $this->isbnNumber = $builder->getIsbnNumber();
-        $this->isReserved = $builder->getIsReserved();
     }
 
     public function getTitle()
@@ -33,10 +30,5 @@ final class Book
     public function getIsbnNumber()
     {
         return $this->isbnNumber;
-    }
-
-    public function getIsReserved()
-    {
-        return $this->isReserved;
     }
 }

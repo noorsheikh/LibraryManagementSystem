@@ -1,6 +1,6 @@
 <?php
 
-namespace Library\Repository;
+namespace Library\Persistence;
 
 use Doctrine\DBAL\Connection;
 
@@ -8,7 +8,7 @@ use Library\Domain\Book;
 use Library\Domain\Copy;
 use Library\Domain\Borrower;
 
-class LibraryRepository
+class LibraryRepository implements Repository
 {
 
     private $connection;
@@ -20,7 +20,6 @@ class LibraryRepository
     public function addBook(Book $book)
     {
         try {
-
             $this->connection()->insert(
                 'book',
                 array(
@@ -37,47 +36,9 @@ class LibraryRepository
         }
     }
 
-    public function addCopy(Copy $copy)
-    {
-        try {
-
-            $this->connection()->insert(
-                'copy',
-                array(
-                    'isbn_number' => $copy->getIsbnNumber(),
-                    'copy_number' => $copy->getCopyNumber(),
-                    'fk_book_id' => $copy->getBookId()
-                )
-            );
-
-        } catch (\Exception $exception) {
-            throw new $exception;
-        }
-    }
-
-    public function addBorrower(Borrower $borrower)
-    {
-        try {
-
-            $this->connection()->insert(
-                'borrower',
-                array(
-                    'borrower_name' => $borrower->getBorrowerName(),
-                    'borrower_membership_id' => $borrower->getBorrowerMembershipId(),
-                    'status' => $borrower->getStatus()
-                )
-            );
-
-        } catch (\Exception $exception) {
-            throw new $exception;
-
-        }
-    }
-
     public function getBooks()
     {
         try {
-
             $stmt = $this->connection()->prepare("SELECT * FROM book ");
             $stmt->execute();
             $books = $stmt->fetchAll();
@@ -92,7 +53,6 @@ class LibraryRepository
     public function getBook($id)
     {
         try {
-
             if (empty($id)) {
                 throw new Exception("Book ID cannot be null", 1);
             }
@@ -113,7 +73,6 @@ class LibraryRepository
     public function listAvailableBooks()
     {
         try {
-
             $stmt = $this->connection()->prepare("
                 SELECT b.title, b.author, b.isbn_number, count(c.id) available_copies FROM book b, copy c
                 WHERE b.id = c.fk_book_id AND b.isbn_number = c.isbn_number;
@@ -123,6 +82,59 @@ class LibraryRepository
 
             return $books;
 
+        } catch (\Exception $exception) {
+            throw new $exception;
+        }
+    }
+
+    public function addCopy(Copy $copy)
+    {
+        try {
+            $this->connection()->insert(
+                'copy',
+                array(
+                    'isbn_number' => $copy->getIsbnNumber(),
+                    'copy_number' => $copy->getCopyNumber(),
+                    'fk_book_id' => $copy->getBookId()
+                )
+            );
+
+        } catch (\Exception $exception) {
+            throw new $exception;
+        }
+    }
+
+    public function addBorrower(Borrower $borrower)
+    {
+        try {
+            $this->connection()->insert(
+                'borrower',
+                array(
+                    'borrower_name' => $borrower->getBorrowerName(),
+                    'borrower_membership_id' => $borrower->getBorrowerMembershipId(),
+                    'status' => $borrower->getStatus()
+                )
+            );
+
+        } catch (\Exception $exception) {
+            throw new $exception;
+        }
+    }
+
+    public function updateBorrower(Borrower $borrower, $id)
+    {
+        try {
+            $this->connection()->update(
+                'borrower',
+                array(
+                    'borrower_name' => $borrower->getBorrowerName(),
+                    'borrower_membership_id' => $borrower->getBorrowerMembershipId(),
+                    'status' => $borrower->getStatus()
+                ),
+                array(
+                    'id' => $id
+                )
+            );
         } catch (\Exception $exception) {
             throw new $exception;
         }

@@ -26,11 +26,12 @@ Base URL: http://localhost:8888/LibraryManagementSystem/library
 
 | Endpoint   | Description |
 | :-----------  | :----------- |
+| /add-book    |   Add a new book to the library with or without multiple copies. |
 | /books  |   Display list of all the books in library. |
 | /book/{id}   |   Display details for a single book. |
 | /available-books |   Display list of all available books. |
-| /add-book    |   Add a new book to the library with or without multiple copies. |
 | /add-borrower |   Add a new borrower or membership for a person. |
+| /update-borrower/{id} |   Update borrower information for a person. |
 
 
 ## Testing APIs locally
