@@ -10,8 +10,6 @@ final class BookBuilder
 
     private $isbnNumber;
 
-    private $isReserved;
-
     public static $instance;
 
     public static function instance()
@@ -21,26 +19,38 @@ final class BookBuilder
 
     public function withTitle($title)
     {
-        $this->title = $title;
+        if (empty($title)) {
+            $this->title = "";
+        } else {
+            $this->title = $title;
+        }
+
         return $this;
+
     }
 
     public function withAuthor($author)
     {
-        $this->author = $author;
+        if (empty($author)) {
+            $this->author = "";
+        } else {
+            $this->author = $author;
+        }
+
         return $this;
+
     }
 
     public function withIsbnNumber($isbnNumber)
     {
-        $this->isbnNumber = $isbnNumber;
-        return $this;
-    }
+        if (empty($isbnNumber)) {
+            $this->isbnNumber = "";
+        } else {
+            $this->isbnNumber = $isbnNumber;
+        }
 
-    public function withIsReserved($isReserved)
-    {
-        $this->isReserved = $isReserved;
         return $this;
+
     }
 
     public function build()
@@ -61,10 +71,5 @@ final class BookBuilder
     public function getIsbnNumber()
     {
         return $this->isbnNumber;
-    }
-
-    public function getIsReserved()
-    {
-        return $this->isReserved;
     }
 }

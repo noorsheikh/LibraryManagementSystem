@@ -19,20 +19,38 @@ final class BorrowerBuilder
 
     public function withBorrowerName($borrowerName)
     {
-        $this->borrowerName = $borrowerName;
+        if (empty($borrowerName)) {
+            $this->borrowerName = "";
+        } else {
+            $this->borrowerName = $borrowerName;
+        }
+
         return $this;
+
     }
 
     public function withBorrowerMembershipId($borrowerMembershipId)
     {
-        $this->borrowerMembershipId = $borrowerMembershipId;
+        if (empty($borrowerMembershipId)) {
+            $this->borrowerMembershipId = "";
+        } else {
+            $this->borrowerMembershipId = $borrowerMembershipId;
+        }
+
         return $this;
+
     }
 
     public function withStatus($status)
     {
-        $this->status = $status;
+        if (empty($status)) {
+            $this->status = "";
+        } else {
+            $this->status = $status;
+        }
+
         return $this;
+
     }
 
     public function build()
