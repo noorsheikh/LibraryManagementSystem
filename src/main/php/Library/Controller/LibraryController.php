@@ -69,9 +69,11 @@ class LibraryController implements ControllerProviderInterface
 
         });
 
-        $this->controller->get("/books", function (Application $app) {
+        $this->controller->get("/books", function ($app) {
             try {
                 $books = $this->repository->getBooks();
+
+                var_dump("Hello World!");
 
                 return $app->json($books);
 
