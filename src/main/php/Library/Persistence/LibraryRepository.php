@@ -74,8 +74,14 @@ class LibraryRepository implements Repository
     {
         try {
             $stmt = $this->connection()->prepare("
-                SELECT b.title, b.author, b.isbn_number, count(c.id) available_copies FROM book b, copy c
-                WHERE b.id = c.fk_book_id AND b.isbn_number = c.isbn_number;
+                SELECT
+                b.title,
+                b.author,
+                b.isbn_number,
+                (SELECT COUNT(c.id) FROM copy c WHERE c.fk_book_id = b.id) available_copies
+                FROM book b
+                JOIN copy c ON c.fk_book_id = b.id
+                WHERE c.fk_book_id = b.id AND available_copies > 0;
             ");
             $stmt->execute();
             $books = $stmt->fetchAll();
