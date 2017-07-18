@@ -11,5 +11,9 @@
     "autoload": {
         "psr-0": {"": "src/"},
         "psr-4": {"Library\\": "src/main/php/Library"}
+    },
+    "autoload-dev": {
+        "psr-0": {"": "src/"},
+        "psr-4": {"Library\\": "src/test/php/Library"}
     }
 }

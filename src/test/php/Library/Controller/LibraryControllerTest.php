@@ -6,12 +6,14 @@ use Silex\WebTestCase;
 
 class LibraryControllerTest extends WebTestCase
 {
+    const BASE_URL = "http://localhost:8888/LibraryManagementSystem/library";
+    const BASE_DIR = __DIR__;
 
     public function createApplication()
     {
-        $app = require "/Users/noor.sheikh/Desktop/Learnings/PHP/SilexFramework/Projects/LibraryManagementSystem/app/app.php";
+        $app = require self::BASE_DIR . "/../../../../../app/app.php";
 
-        return $this->app = $app;
+        return $app;
     }
 
     public function setUp()
@@ -23,7 +25,7 @@ class LibraryControllerTest extends WebTestCase
     {
         $client = $this->createClient();
 
-        $client->request("GET", "http://localhost:8888/LibraryManagementSystem/library/books");
+        $client->request("GET", self::BASE_URL . "/books");
 
         $this->assertEquals($client->getResponse()->getStatusCode(), 200);
     }

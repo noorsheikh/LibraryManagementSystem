@@ -11,7 +11,7 @@
          syntaxCheck="false"
 >
     <testsuites>
-        <testsuite name="YourApp Test Suite">
+        <testsuite name="LibraryManagementSystem Test Suite">
             <directory>./src/test/php/Library</directory>
         </testsuite>
     </testsuites>
