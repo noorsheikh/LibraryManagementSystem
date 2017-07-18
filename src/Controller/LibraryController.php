@@ -69,6 +69,31 @@ class LibraryController implements ControllerProviderInterface
 
         });
 
+        $this->controller->post("/add-copies/{id}", function (Request $request, $id) use ($app) {
+            try {
+                $bookCopies = $request->request->get('copies');
+
+                if (!empty($bookCopies)) {
+                    foreach($bookCopies as $copy) {
+                        $copy = CopyBuilder::instance()
+                                    ->withIsbnNumber($copy['isbn_number'])
+                                    ->withCopyNumber($copy['copy_number'])
+                                    ->withBookId($id)
+                                    ->build();
+
+                        if ($copy instanceof Copy) {
+                            $this->repository->addCopy($copy);
+                        }
+                    }
+                }
+
+                return $app->json("Copies added successfully for book id " . $id, 201);
+
+            } catch (\Exception $exception) {
+                throw new $exception;
+            }
+        });
+
         $this->controller->get("/books", function (Application $app) {
             try {
                 $books = $this->repository->getBooks();
