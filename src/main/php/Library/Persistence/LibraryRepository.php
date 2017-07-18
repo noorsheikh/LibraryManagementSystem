@@ -80,8 +80,7 @@ class LibraryRepository implements Repository
                 b.isbn_number,
                 (SELECT COUNT(c.id) FROM copy c WHERE c.fk_book_id = b.id) available_copies
                 FROM book b
-                JOIN copy c ON c.fk_book_id = b.id
-                WHERE c.fk_book_id = b.id AND available_copies > 0;
+                WHERE available_copies > 0;
             ");
             $stmt->execute();
             $books = $stmt->fetchAll();
