@@ -1,8 +1,7 @@
 <?php
 
-namespace Library\Controller;
-
 use Silex\WebTestCase;
+use Library\Controller\LibraryController;
 
 class LibraryControllerTest extends WebTestCase
 {

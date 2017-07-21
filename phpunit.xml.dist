@@ -12,7 +12,7 @@
 >
     <testsuites>
         <testsuite name="LibraryManagementSystem Test Suite">
-            <directory>./src/test/php/Library</directory>
+            <directory>./src/test/php/Library/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

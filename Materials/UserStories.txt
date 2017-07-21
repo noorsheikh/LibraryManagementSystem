@@ -1,0 +1,13 @@
+AS A USER, I want to check a book and if any copy of it is available.
+AS A USER, I want to reserve a book.
+AS A USER, I want to check all available books for a specific author.
+AS A USER, I want to see list of all books. -- DONE
+AS A USER, I want to check list of available books with number of available copies. -- DONE
+AS A USER, I want to check details for a specific book. -- DONE
+AS A USER, I want to reserve a book.
+AS A USER, I want to loan a book.
+
+AS A LIBRRAIAN, I want to add a book and its details. -- DONE
+AS A LIBRRAIAN, I want to add available copies for a book.
+AS A LIBRARIAN, I want to add a new borrower. -- DONE
+AS A LIBRARIAN, I want to update borrower information. -- DONE
