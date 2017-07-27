@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Library\Controller;
+
 use Silex\WebTestCase;
 use Library\Controller\LibraryController;
 
