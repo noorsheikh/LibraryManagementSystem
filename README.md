@@ -27,7 +27,7 @@ composer install
 
 ## API Endpoints
 
-Base URL: http://localhost:8888/LibraryManagementSystem/library
+Base URL: http://localhost:8888/LibraryManagementSystemRESTAPIs/library
 
 | Endpoint   | Description |
 | :-----------  | :----------- |
