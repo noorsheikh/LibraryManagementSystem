@@ -27,12 +27,10 @@ class LibraryController implements ControllerProviderInterface
     {
         $this->controller = $app['controllers_factory'];
         $this->repository = new LibraryRepository($app['db']);
-
     }
 
     public function connect(Application $app)
     {
-
         $this->controller->post("/add-book", function (Request $request) use ($app) {
             try {
                 $book = BookBuilder::instance()
@@ -62,11 +60,34 @@ class LibraryController implements ControllerProviderInterface
                 }
 
                 return $app->json("Book added successfully", 201);
-
             } catch (\Exception $exception) {
                 throw new $exception;
             }
 
+        });
+
+        $this->controller->post("/add-copies/{id}", function (Request $request, $id) use ($app) {
+            try {
+                $bookCopies = $request->request->get('copies');
+
+                if (!empty($bookCopies)) {
+                    foreach($bookCopies as $copy) {
+                        $copy = CopyBuilder::instance()
+                                    ->withIsbnNumber($copy['isbn_number'])
+                                    ->withCopyNumber($copy['copy_number'])
+                                    ->withBookId($id)
+                                    ->build();
+
+                        if ($copy instanceof Copy) {
+                            $this->repository->addCopy($copy);
+                        }
+                    }
+                }
+
+                return $app->json("Copies added successfully for book id " . $id, 201);
+            } catch (\Exception $exception) {
+                throw new $exception;
+            }
         });
 
         $this->controller->get("/books", function (Application $app) {
@@ -74,7 +95,6 @@ class LibraryController implements ControllerProviderInterface
                 $books = $this->repository->getBooks();
 
                 return $app->json($books);
-
             } catch (\Exception $exception) {
                 throw new $exception;
             }
@@ -85,7 +105,6 @@ class LibraryController implements ControllerProviderInterface
                 $book = $this->repository->getBook($id);
 
                 return $app->json($book);
-
             } catch (\Exception $exception) {
                 throw new $exception;
             }
@@ -97,7 +116,6 @@ class LibraryController implements ControllerProviderInterface
                 $availableBooks = $this->repository->listAvailableBooks();
 
                 return $app->json($availableBooks);
-
             } catch (\Exception $exception) {
                 throw new $exception;
             }
@@ -116,7 +134,6 @@ class LibraryController implements ControllerProviderInterface
                 }
 
                 return $app->json("Borrower added sucessfully", 201);
-
             } catch (\Exception $exception) {
                 throw new $exception;
             }
@@ -135,7 +152,6 @@ class LibraryController implements ControllerProviderInterface
                 }
 
                 return $app->json("Borrower updated successfully", 201);
-
             } catch (\Exception $exception) {
                 throw new $exception;
             }

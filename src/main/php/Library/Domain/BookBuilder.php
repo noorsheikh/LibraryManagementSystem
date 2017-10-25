@@ -20,13 +20,12 @@ final class BookBuilder
     public function withTitle($title)
     {
         if (empty($title)) {
-            $this->title = "";
-        } else {
-            $this->title = $title;
+            throw new \Exception("Title cannot be empty");
         }
 
-        return $this;
+        $this->title = $title;
 
+        return $this;
     }
 
     public function withAuthor($author)
@@ -38,19 +37,17 @@ final class BookBuilder
         }
 
         return $this;
-
     }
 
     public function withIsbnNumber($isbnNumber)
     {
         if (empty($isbnNumber)) {
-            $this->isbnNumber = "";
-        } else {
-            $this->isbnNumber = $isbnNumber;
+            throw new \Exception("ISBN number cannot be empty");
         }
 
-        return $this;
+        $this->isbnNumber = $isbnNumber;
 
+        return $this;
     }
 
     public function build()

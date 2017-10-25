@@ -26,7 +26,6 @@ final class BorrowerBuilder
         }
 
         return $this;
-
     }
 
     public function withBorrowerMembershipId($borrowerMembershipId)
@@ -38,7 +37,6 @@ final class BorrowerBuilder
         }
 
         return $this;
-
     }
 
     public function withStatus($status)
@@ -50,7 +48,6 @@ final class BorrowerBuilder
         }
 
         return $this;
-
     }
 
     public function build()

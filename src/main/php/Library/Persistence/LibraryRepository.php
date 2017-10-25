@@ -30,7 +30,6 @@ class LibraryRepository implements Repository
             );
 
             return $this->connection()->lastInsertId();
-
         } catch (\Exception $exception) {
             throw new $exception;
         }
@@ -41,10 +40,10 @@ class LibraryRepository implements Repository
         try {
             $stmt = $this->connection()->prepare("SELECT * FROM book ");
             $stmt->execute();
+
             $books = $stmt->fetchAll();
 
             return $books;
-
         } catch (\Exception $exception) {
             throw new $exception;
         }
@@ -74,14 +73,19 @@ class LibraryRepository implements Repository
     {
         try {
             $stmt = $this->connection()->prepare("
-                SELECT b.title, b.author, b.isbn_number, count(c.id) available_copies FROM book b, copy c
-                WHERE b.id = c.fk_book_id AND b.isbn_number = c.isbn_number;
+                SELECT
+                b.title,
+                b.author,
+                b.isbn_number,
+                (SELECT COUNT(c.id) FROM copy c WHERE c.fk_book_id = b.id) available_copies
+                FROM book b
+                WHERE available_copies > 0;
             ");
             $stmt->execute();
+
             $books = $stmt->fetchAll();
 
             return $books;
-
         } catch (\Exception $exception) {
             throw new $exception;
         }
