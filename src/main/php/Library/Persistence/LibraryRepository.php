@@ -30,7 +30,6 @@ class LibraryRepository implements Repository
             );
 
             return $this->connection()->lastInsertId();
-
         } catch (\Exception $exception) {
             throw new $exception;
         }
@@ -41,10 +40,10 @@ class LibraryRepository implements Repository
         try {
             $stmt = $this->connection()->prepare("SELECT * FROM book ");
             $stmt->execute();
+
             $books = $stmt->fetchAll();
 
             return $books;
-
         } catch (\Exception $exception) {
             throw new $exception;
         }
@@ -83,10 +82,10 @@ class LibraryRepository implements Repository
                 WHERE available_copies > 0;
             ");
             $stmt->execute();
+
             $books = $stmt->fetchAll();
 
             return $books;
-
         } catch (\Exception $exception) {
             throw new $exception;
         }
