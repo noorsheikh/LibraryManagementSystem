@@ -18,7 +18,7 @@ Following are the details for downloading and setting up local development envir
 
 Clone the repository to your local development directory
 ```
-git clone https://github.com/noorsheikh/LibraryManagementSystem.git
+git clone https://github.com/noorsheikh/LibraryManagementSystemRESTAPIs.git
 ```
 Then run the below command in terminal:
 ```
