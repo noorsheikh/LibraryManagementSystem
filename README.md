@@ -6,11 +6,17 @@ Silex PHP Framework based RESTful Web APIs for Library Management System.
 
 How to setup this localy
 
-### Prerequisities
+### Prerequisities:
 
 - PHP 5.6
 - Composer (https://getcomposer.org/)
 - SQLite 3 or above
+
+### PHP Libraries (Symfony Components) used:
+
+- doctrine/dbal
+- symfony/console
+- fzaninotto/faker
 
 ### Configuration
 
