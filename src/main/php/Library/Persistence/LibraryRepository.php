@@ -25,7 +25,10 @@ class LibraryRepository implements Repository
                 array(
                     'title' => $book->getTitle(),
                     'author' => $book->getAuthor(),
-                    'isbn_number' => $book->getIsbnNumber()
+                    'isbn_number' => $book->getIsbnNumber(),
+                    'cover' => $book->getCover(),
+                    'year' => $book->getYear(),
+                    'description' => $book->getDescription()
                 )
             );
 
@@ -77,6 +80,9 @@ class LibraryRepository implements Repository
                 b.title,
                 b.author,
                 b.isbn_number,
+                b.cover,
+                b.year,
+                b.description,
                 (SELECT COUNT(c.id) FROM copy c WHERE c.fk_book_id = b.id) available_copies
                 FROM book b
                 WHERE available_copies > 0;

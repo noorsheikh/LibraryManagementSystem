@@ -10,11 +10,20 @@ final class Book
 
     private $isbnNumber;
 
+    private $cover;
+
+    private $year;
+
+    private $description;
+
     public function __construct(BookBuilder $builder)
     {
         $this->title = $builder->getTitle();
         $this->author = $builder->getAuthor();
         $this->isbnNumber = $builder->getIsbnNumber();
+        $this->cover = $builder->getCover();
+        $this->year = $builder->getYear();
+        $this->description = $builder->getDescription();
     }
 
     public function getTitle()
@@ -30,5 +39,20 @@ final class Book
     public function getIsbnNumber()
     {
         return $this->isbnNumber;
+    }
+
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

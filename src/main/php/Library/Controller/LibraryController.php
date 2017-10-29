@@ -37,6 +37,9 @@ class LibraryController implements ControllerProviderInterface
                             ->withTitle($request->request->get('title'))
                             ->withAuthor($request->request->get('author'))
                             ->withIsbnNumber($request->request->get('isbn_number'))
+                            ->withCover($request->request->get('cover'))
+                            ->withYear($request->request->get('year'))
+                            ->withDescription($request->request->get('description'))
                             ->build();
 
                 if ($book instanceof Book) {
@@ -48,7 +51,7 @@ class LibraryController implements ControllerProviderInterface
                 if (!empty($bookCopies)) {
                     foreach ($bookCopies as $copy) {
                         $copy = CopyBuilder::instance()
-                                    ->withIsbnNumber($copy['isbn_number'])
+                                    ->withIsbnNumber($request->request->get('isbn_number'))
                                     ->withCopyNumber($copy['copy_number'])
                                     ->withBookId($bookId)
                                     ->build();

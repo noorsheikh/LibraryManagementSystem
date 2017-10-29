@@ -20,6 +20,9 @@ class LibraryRepositoryTest extends WebTestCase
     const BORROWER_NAME = 'noor';
     const MEMBERSHIP_ID = 12345;
     const MEMBERSHIP_STATUS = 1;
+    const COVER = 'cover image';
+    const YEAR = 20187;
+    const DESCRIPTION = "This is a sample description.";
 
     public function createApplication()
     {
@@ -38,6 +41,9 @@ class LibraryRepositoryTest extends WebTestCase
             ->withTitle(self::TITLE)
             ->withAuthor(self::AUTHOR)
             ->withIsbnNumber(self::ISBN_NUMBER)
+            ->withCover(self::COVER)
+            ->withYear(self::YEAR)
+            ->withDescription(self::DESCRIPTION)
             ->build();
 
         $connection

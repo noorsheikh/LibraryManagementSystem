@@ -10,6 +10,12 @@ final class BookBuilder
 
     private $isbnNumber;
 
+    private $cover;
+
+    private $year;
+
+    private $description;
+
     public static $instance;
 
     public static function instance()
@@ -50,6 +56,39 @@ final class BookBuilder
         return $this;
     }
 
+    public function withCover($cover)
+    {
+        if (empty($cover)) {
+            $this->cover = "";
+        } else {
+            $this->cover = $cover;
+        }
+
+        return $this;
+    }
+
+    public function withYear($year)
+    {
+        if (empty($year)) {
+            $this->year = "";
+        } else {
+            $this->year = $year;
+        }
+
+        return $this;
+    }
+
+    public function withDescription($description)
+    {
+        if (empty($description)) {
+            $this->description = "";
+        } else {
+            $this->description = $description;
+        }
+
+        return $this;
+    }
+
     public function build()
     {
         return new Book($this);
@@ -68,5 +107,20 @@ final class BookBuilder
     public function getIsbnNumber()
     {
         return $this->isbnNumber;
+    }
+
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

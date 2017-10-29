@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+$rootDir = __DIR__;
+require_once $rootDir . "/../vendor/autoload.php";
+require $rootDir.'/../app/config.php';
+
+use Symfony\Component\Console\Application;
+
+use Library\Command\LibraryDataFixtureCommand;
+use Library\Fixture\LibraryDataFixture;
+use Library\Persistence\LibraryRepository;
+
+//$app = new Silex\Application();
+
+$libraryRepository = new LibraryRepository($app['db']);
+
+$libraryDataFixture = new LibraryDataFixture($libraryRepository);
+
+$console = new Application();
+$console->add(new LibraryDataFixtureCommand($libraryDataFixture));
+$console->run();

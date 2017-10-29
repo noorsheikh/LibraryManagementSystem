@@ -25,6 +25,20 @@ Then run the below command in terminal:
 composer install
 ```
 
+## Generating Data Fixture
+
+The below command need to be run through terminal from the root directory of the project.
+```
+php ./bin/console library:generate:book-and-copies <total no. of books> <total no. of copies for each book>
+```
+
+#### Example command
+
+The below command will generate 50 books with each book having 3 copies available
+```
+php ./bin/console library:generate:book-and-copies 50 3
+```
+
 ## API Endpoints
 
 Base URL: http://localhost:8888/LibraryManagementSystemRESTAPIs/library

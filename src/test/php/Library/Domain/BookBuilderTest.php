@@ -10,6 +10,9 @@ class BookBuilderTest extends WebTestCase
     const TITLE = 'title';
     const AUTHOR = 'author';
     const ISBN_NUMBER = '123456';
+    const COVER = 'cover image';
+    const YEAR = 20187;
+    const DESCRIPTION = "This is a sample description.";
 
     public function createApplication()
     {
@@ -26,6 +29,9 @@ class BookBuilderTest extends WebTestCase
             ->withTitle(null)
             ->withAuthor(self::AUTHOR)
             ->withIsbnNumber(self::ISBN_NUMBER)
+            ->withCover(self::COVER)
+            ->withYear(self::YEAR)
+            ->withDescription(self::DESCRIPTION)
             ->build();
     }
 
@@ -39,6 +45,9 @@ class BookBuilderTest extends WebTestCase
             ->withTitle(self::TITLE)
             ->withAuthor(self::AUTHOR)
             ->withIsbnNumber(null)
+            ->withCover(self::COVER)
+            ->withYear(self::YEAR)
+            ->withDescription(self::DESCRIPTION)
             ->build();
     }
 }
