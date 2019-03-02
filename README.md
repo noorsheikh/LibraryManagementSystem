@@ -8,7 +8,7 @@ How to setup this localy
 
 ### Prerequisities:
 
-- PHP 5.6
+- PHP 7
 - Composer (https://getcomposer.org/)
 - SQLite 3 or above
 
