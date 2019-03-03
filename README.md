@@ -53,7 +53,7 @@ Below host entry need to be added to ```etc/hosts```
 ## Local Docker Environment Setup
 Do the following steps from your project's root directory in terminal:
 * Build docker image ```docker-compose build```
-* Start container ```docker-compose up``` with logs or include ``` -d``` at the start containers in deteched mode
+* Start container ```docker-compose up``` with logs or include ``` -d``` at the start containers in deteched mode <br />
 Note: For stopping running containers execute this command ```docker-compose down```
 
 ## API Endpoints
