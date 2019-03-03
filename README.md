@@ -8,7 +8,7 @@ How to setup this localy
 
 ### Prerequisities:
 
-- PHP 7
+- PHP 7.3
 - Composer (https://getcomposer.org/)
 - SQLite 3 or above
 
@@ -44,10 +44,15 @@ The below command will generate 50 books with each book having 3 copies availabl
 ```
 php ./bin/console library:generate:book-and-copies 50 3
 ```
+## Setup Host File
+Below host entry need to be added to ```etc/hosts```
+```
+127.0.0.1       rest.library.local
+```
 
 ## API Endpoints
 
-Base URL: http://localhost:8888/LibraryManagementSystemRESTAPIs/library
+Base URL: http://rest.library.local/library
 
 | Endpoint   | Description |
 | :-----------  | :----------- |
