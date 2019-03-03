@@ -50,6 +50,12 @@ Below host entry need to be added to ```etc/hosts```
 127.0.0.1       rest.library.local
 ```
 
+## Local Docker Environment Setup
+Do the following steps from your project's root directory in terminal:
+Step 1: Build docker image ```docker-compose build```
+Step 2: Start container ```docker-compose up``` with logs or include ``` -d``` at the start containers in deteched mode
+Note: For stopping running containers execute this command ```docker-compose down```
+
 ## API Endpoints
 
 Base URL: http://rest.library.local/library
