@@ -26,7 +26,6 @@ RUN a2enmod rewrite
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN echo "DocumentRoot /var/www/html" >> /etc/apache2/apache2.conf
-# RUN echo "LoadModule rewrite_module modules/mod_rewrite.so" >> /etc/apache2/apache2.conf
 
 EXPOSE 80
 
