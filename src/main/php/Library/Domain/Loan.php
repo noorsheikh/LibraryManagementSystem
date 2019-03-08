@@ -29,37 +29,37 @@ final class Loan
         $this->borrowerId = $builder->getBorrowerId();
     }
 
-    public function getBorrowerMembershipId()
+    public function getBorrowerMembershipId(): string
     {
         return $this->borrowerMembershipId;
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getDateOut()
+    public function getDateOut(): string
     {
         return $this->dateOut;
     }
 
-    public function getDateIn()
+    public function getDateIn(): string
     {
         return $this->dateIn;
     }
 
-    public function getCopyNumber()
+    public function getCopyNumber(): int
     {
         return $this->copyNumber;
     }
 
-    public function getCopyId()
+    public function getCopyId(): int
     {
         return $this->copyId;
     }
 
-    public function getBorrowerId()
+    public function getBorrowerId(): int
     {
         return $this->borrowerId;
     }

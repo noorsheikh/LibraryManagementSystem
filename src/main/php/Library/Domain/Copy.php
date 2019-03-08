@@ -17,17 +17,17 @@ final class Copy
         $this->bookId = $builder->getBookId();
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getCopyNumber()
+    public function getCopyNumber(): int
     {
         return $this->copyNumber;
     }
 
-    public function getBookId()
+    public function getBookId(): int
     {
         return $this->bookId;
     }

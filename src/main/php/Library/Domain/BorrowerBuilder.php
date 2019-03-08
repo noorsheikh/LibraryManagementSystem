@@ -17,7 +17,7 @@ final class BorrowerBuilder
         return new static;
     }
 
-    public function withBorrowerName($borrowerName)
+    public function withBorrowerName(string $borrowerName): BorwerBuilder
     {
         if (empty($borrowerName)) {
             $this->borrowerName = "";
@@ -28,7 +28,7 @@ final class BorrowerBuilder
         return $this;
     }
 
-    public function withBorrowerMembershipId($borrowerMembershipId)
+    public function withBorrowerMembershipId(string $borrowerMembershipId): BorwerBuilder
     {
         if (empty($borrowerMembershipId)) {
             $this->borrowerMembershipId = "";
@@ -39,7 +39,7 @@ final class BorrowerBuilder
         return $this;
     }
 
-    public function withStatus($status)
+    public function withStatus(int $status): BorwerBuilder
     {
         if (empty($status)) {
             $this->status = "";
@@ -50,22 +50,22 @@ final class BorrowerBuilder
         return $this;
     }
 
-    public function build()
+    public function build(): Borrower
     {
         return new Borrower($this);
     }
 
-    public function getBorrowerName()
+    public function getBorrowerName(): string
     {
         return $this->borrowerName;
     }
 
-    public function getBorrowerMembershipId()
+    public function getBorrowerMembershipId(): string
     {
         return $this->borrowerMembershipId;
     }
 
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->status;
     }

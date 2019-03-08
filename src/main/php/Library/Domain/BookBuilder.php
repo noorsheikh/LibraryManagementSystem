@@ -23,7 +23,7 @@ final class BookBuilder
         return new static;
     }
 
-    public function withTitle($title)
+    public function withTitle($title): BookBuilder
     {
         if (empty($title)) {
             throw new \Exception("Title cannot be empty");
@@ -34,7 +34,7 @@ final class BookBuilder
         return $this;
     }
 
-    public function withAuthor($author)
+    public function withAuthor(string $author): BookBuilder
     {
         if (empty($author)) {
             $this->author = "";
@@ -45,7 +45,7 @@ final class BookBuilder
         return $this;
     }
 
-    public function withIsbnNumber($isbnNumber)
+    public function withIsbnNumber(string $isbnNumber): BookBuilder
     {
         if (empty($isbnNumber)) {
             throw new \Exception("ISBN number cannot be empty");
@@ -56,7 +56,7 @@ final class BookBuilder
         return $this;
     }
 
-    public function withCover($cover)
+    public function withCover(string $cover): BookBuilder
     {
         if (empty($cover)) {
             $this->cover = "";
@@ -67,7 +67,7 @@ final class BookBuilder
         return $this;
     }
 
-    public function withYear($year)
+    public function withYear(string $year): BookBuilder
     {
         if (empty($year)) {
             $this->year = "";
@@ -78,7 +78,7 @@ final class BookBuilder
         return $this;
     }
 
-    public function withDescription($description)
+    public function withDescription(string $description): BookBuilder
     {
         if (empty($description)) {
             $this->description = "";
@@ -89,37 +89,37 @@ final class BookBuilder
         return $this;
     }
 
-    public function build()
+    public function build(): Book
     {
         return new Book($this);
     }
 
-    public function gettitle()
+    public function gettitle(): string
     {
         return $this->title;
     }
 
-    public function getAuthor()
+    public function getAuthor(): string
     {
         return $this->author;
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getCover()
+    public function getCover(): string
     {
         return $this->cover;
     }
 
-    public function getYear()
+    public function getYear(): int
     {
         return $this->year;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }

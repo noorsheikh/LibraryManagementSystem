@@ -24,12 +24,12 @@ class LibraryDataFixture
         $this->repository = $libraryRepository;
     }
 
-    public function process($totalBooks, $totalCopies)
+    public function process(int $totalBooks, int $totalCopies): void
     {
         $this->addBooks($totalBooks, $totalCopies);
     }
 
-    private function addBooks($totalBooks, $totalCopies)
+    private function addBooks(int $totalBooks, int $totalCopies): void
     {
         try {
             for ($i = 0; $i < $totalBooks; $i++) {

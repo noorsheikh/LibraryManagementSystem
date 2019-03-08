@@ -18,7 +18,6 @@ use Library\Persistence\LibraryRepository;
 
 class LibraryController implements ControllerProviderInterface
 {
-
     private $controller;
 
     private $repository;

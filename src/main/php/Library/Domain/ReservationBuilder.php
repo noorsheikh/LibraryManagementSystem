@@ -1,5 +1,4 @@
 <?php
-
 namespace Library\Domain;
 
 final class ReservationBuilder
@@ -14,7 +13,7 @@ final class ReservationBuilder
 
     private $borrowerId;
 
-    private $bookId
+    private $bookId;
 
     public static $instance;
 
@@ -23,73 +22,73 @@ final class ReservationBuilder
         return new static;
     }
 
-    public function withBorrowerMembershipId($borrowerMembershipId)
+    public function withBorrowerMembershipId(string $borrowerMembershipId): ReservationBuilder
     {
         $this->borrowerMembershipId = $borrowerMembershipId;
         return $this;
     }
 
-    public function withIsbnNumber($isbnNumber)
+    public function withIsbnNumber(string $isbnNumber): ReservationBuilder
     {
         $this->isbnNumber = $isbnNumber;
         return $this;
     }
 
-    public function withReservationDate($reservationDate)
+    public function withReservationDate(string $reservationDate): ReservationBuilder
     {
         $this->reservationDate = $reservationDate;
         return $this;
     }
 
-    public function withRedeemedDate($redeemedDate)
+    public function withRedeemedDate(string $redeemedDate): ReservationBuilder
     {
         $this->redeemedDate = $redeemedDate;
         return $this;
     }
 
-    public function withBorrowerId($borrowerId)
+    public function withBorrowerId(int $borrowerId): ReservationBuilder
     {
         $this->borrowerId = $borrowerId;
         return $this;
     }
 
-    public function withBookId($bookId)
+    public function withBookId(int $bookId): ReservationBuilder
     {
         $this->bookId = $bookId;
         return $this;
     }
 
-    public function build()
+    public function build(): Reservation
     {
         return new Reservation($this);
     }
 
-    public function getBorrowerMembershipId()
+    public function getBorrowerMembershipId(): string
     {
         return $this->borrowerMembershipId;
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getReservationDate()
+    public function getReservationDate(): string
     {
         return $this->reservationDate;
     }
 
-    public function getRedeemedDate()
+    public function getRedeemedDate(): string
     {
         return $this->redeemedDate;
     }
 
-    public function getBorrowerId()
+    public function getBorrowerId(): int
     {
         return $this->borrowerId;
     }
 
-    public function getBookId()
+    public function getBookId(): int
     {
         return $this->bookId;
     }

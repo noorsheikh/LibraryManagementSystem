@@ -1,6 +1,9 @@
 <?php
 
-ini_set('display_errors', 0);
+# enable PHP 7 strict declaration
+#declare(strict_types=1);
+
+ini_set('display_errors', '0');
 
 $rootDir = __DIR__;
 
