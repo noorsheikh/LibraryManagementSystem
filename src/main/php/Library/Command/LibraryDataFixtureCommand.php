@@ -21,7 +21,7 @@ class LibraryDataFixtureCommand extends Command
         $this->libraryDataFixture = $libraryDataFixture;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('library:generate:book-and-copies')
@@ -32,7 +32,7 @@ class LibraryDataFixtureCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $output->writeln('Start generating fake data for library.');
         $output->writeln('Started...');

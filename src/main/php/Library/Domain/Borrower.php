@@ -17,17 +17,17 @@ final class Borrower
         $this->status = $builder->getStatus();
     }
 
-    public function getBorrowerName()
+    public function getBorrowerName(): string
     {
         return $this->borrowerName;
     }
 
-    public function getBorrowerMembershipId()
+    public function getBorrowerMembershipId(): string
     {
         return $this->borrowerMembershipId;
     }
 
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->status;
     }

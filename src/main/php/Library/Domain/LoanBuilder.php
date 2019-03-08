@@ -25,84 +25,84 @@ final class LoanBuilder
         return new static;
     }
 
-    public function withBorrowerMembershipId($borrowerMembershipId)
+    public function withBorrowerMembershipId(string $borrowerMembershipId): LoadBuilder
     {
         $this->borrowerMembershipId = $borrowerMembershipId;
         return $this;
     }
 
-    public function withIsbnNumber($isbnNumber)
+    public function withIsbnNumber(string $isbnNumber): LoadBuilder
     {
         $this->isbnNumber = $isbnNumber;
         return $this;
     }
 
-    public function withDateOut($dateOut)
+    public function withDateOut(string $dateOut): LoadBuilder
     {
         $this->dateOut = $dateOut;
         return $this;
     }
 
-    public function withDateIn($dateIn)
+    public function withDateIn(string $dateIn): LoadBuilder
     {
         $this->dateIn = $dateIn;
         return $this;
     }
 
-    public function withCopyNumber($copyNumber)
+    public function withCopyNumber(int $copyNumber): LoadBuilder
     {
         $this->copyNumber = $copyNumber;
         return $this;
     }
 
-    public function withCopyId($copyId)
+    public function withCopyId(int $copyId): LoadBuilder
     {
         $this->copyId = $copyId;
         return $this;
     }
 
-    public function withBorrowerId($borrowerId)
+    public function withBorrowerId(int $borrowerId): LoadBuilder
     {
         $this->borrowerId = $borrowerId;
         return $this;
     }
 
-    public function build()
+    public function build(): Loan
     {
         return new Loan($this);
     }
 
-    public function getBorrowerMembershipId()
+    public function getBorrowerMembershipId(): string
     {
         return $this->borrowerMembershipId;
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getDateOut()
+    public function getDateOut(): string
     {
         return $this->dateOut;
     }
 
-    public function getDateIn()
+    public function getDateIn(): string
     {
         return $this->dateIn;
     }
 
-    public function getCopyNumber()
+    public function getCopyNumber(): int
     {
         return $this->copyNumber;
     }
 
-    public function getCopyId()
+    public function getCopyId(): int
     {
         return $this->copyId;
     }
 
-    public function getBorrowerId()
+    public function getBorrowerId(): int
     {
         return $this->borrowerId;
     }

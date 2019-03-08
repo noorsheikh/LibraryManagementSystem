@@ -26,32 +26,32 @@ final class Reservation
         $this->bookId = $builder->getBookId();
     }
 
-    public function getBorrowerMembershipId()
+    public function getBorrowerMembershipId(): string
     {
         return $this->borrowerMembershipId;
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getReservationDate()
+    public function getReservationDate(): string
     {
         return $this->reservationDate;
     }
 
-    public function getRedeemedDate()
+    public function getRedeemedDate(): string
     {
         return $this->redeemedDate;
     }
 
-    public function getBorrowerId()
+    public function getBorrowerId(): int
     {
         return $this->borrowerId;
     }
 
-    public function getBookId()
+    public function getBookId(): int
     {
         return $this->bookId;
     }

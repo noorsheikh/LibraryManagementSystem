@@ -17,40 +17,40 @@ final class CopyBuilder
         return new static;
     }
 
-    public function withIsbnNumber($isbnNumber)
+    public function withIsbnNumber(string $isbnNumber): CopyBuilder
     {
         $this->isbnNumber = $isbnNumber;
         return $this;
     }
 
-    public function withCopyNumber($copyNumber)
+    public function withCopyNumber(int $copyNumber): CopyBuilder
     {
         $this->copyNumber = $copyNumber;
         return $this;
     }
 
-    public function withBookId($bookId)
+    public function withBookId(int $bookId): CopyBuilder
     {
         $this->bookId = $bookId;
         return $this;
     }
 
-    public function build()
+    public function build(): Copy
     {
         return new Copy($this);
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getCopyNumber()
+    public function getCopyNumber(): int
     {
         return $this->copyNumber;
     }
 
-    public function getBookId()
+    public function getBookId(): int
     {
         return $this->bookId;
     }

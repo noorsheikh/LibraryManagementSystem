@@ -26,32 +26,32 @@ final class Book
         $this->description = $builder->getDescription();
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getAuthor()
+    public function getAuthor(): string
     {
         return $this->author;
     }
 
-    public function getIsbnNumber()
+    public function getIsbnNumber(): string
     {
         return $this->isbnNumber;
     }
 
-    public function getCover()
+    public function getCover(): string
     {
         return $this->cover;
     }
 
-    public function getYear()
+    public function getYear(): int
     {
         return $this->year;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }

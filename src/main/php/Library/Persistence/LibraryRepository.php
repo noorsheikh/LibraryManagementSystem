@@ -13,11 +13,12 @@ class LibraryRepository implements Repository
 
     private $connection;
 
-    public function __construct(Connection $connection) {
+    public function __construct(Connection $connection)
+    {
         $this->connection = $connection;
     }
 
-    public function addBook(Book $book)
+    public function addBook(Book $book): int
     {
         try {
             $this->connection()->insert(
@@ -38,7 +39,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    public function getBooks()
+    public function getBooks(): array
     {
         try {
             $stmt = $this->connection()->prepare("SELECT * FROM book ");
@@ -52,7 +53,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    public function getBook($id)
+    public function getBook(int $id): array
     {
         try {
             if (empty($id)) {
@@ -72,7 +73,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    public function listAvailableBooks()
+    public function listAvailableBooks(): array
     {
         try {
             $stmt = $this->connection()->prepare("
@@ -97,7 +98,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    public function addCopy(Copy $copy)
+    public function addCopy(Copy $copy): void
     {
         try {
             $this->connection()->insert(
@@ -114,7 +115,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    public function addBorrower(Borrower $borrower)
+    public function addBorrower(Borrower $borrower): void
     {
         try {
             $this->connection()->insert(
@@ -131,7 +132,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    public function updateBorrower(Borrower $borrower, $id)
+    public function updateBorrower(Borrower $borrower, int $id): void
     {
         try {
             $this->connection()->update(
@@ -150,7 +151,7 @@ class LibraryRepository implements Repository
         }
     }
 
-    private function connection()
+    private function connection(): Connection
     {
         return $this->connection;
     }
